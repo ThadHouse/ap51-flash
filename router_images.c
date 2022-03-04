@@ -710,8 +710,8 @@ int router_images_verify_path(const char *image_path)
 
 	len = ret;
 	for (router_image = router_images; *router_image; ++router_image) {
-		if ((*router_image)->path || (*router_image)->embedded_img)
-			continue;
+		// if ((*router_image)->path || (*router_image)->embedded_img)
+		// 	continue;
 
 		if (!(*router_image)->image_verify)
 			continue;
