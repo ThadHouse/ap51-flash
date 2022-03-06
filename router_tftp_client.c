@@ -486,7 +486,7 @@ const struct router_tftp_client om5pan = {
 		.detect_pre = NULL,
 		.detect_main = tftp_client_detect_main,
 		.detect_post = tftp_client_detect_post,
-		.image = &img_ce,
+		.image = &img_ce2,
 		.image_desc = "OM5P",
 		.priv_size = sizeof(struct om2p_priv),
 	},

@@ -78,6 +78,7 @@ extern struct router_image img_uboot;
 extern struct router_image img_ubnt;
 extern struct router_image img_ci;
 extern struct router_image img_ce;
+extern struct router_image img_ce2;
 extern struct router_image img_zyxel;
 
 #endif /* __AP51_FLASH_ROUTER_IMAGES_H__ */

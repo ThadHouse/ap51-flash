@@ -61,7 +61,7 @@ static void node_list_free(void)
 	}
 }
 
-static void node_list_maintain(void)
+static int node_list_maintain(void)
 {
 	struct node *node, *node_s;
 	int ret;
@@ -116,11 +116,13 @@ static void node_list_maintain(void)
 #endif
 			break;
 		case NODE_STATUS_REBOOTED:
+			return 1;
 		case NODE_STATUS_NO_FLASH:
 			/* check timeout and call _node_list_free(list); */
 			break;
 		}
 	}
+	return 0;
 }
 
 void our_mac_set(struct node *node)
@@ -177,7 +179,10 @@ int flash_start(const char *iface)
 
 		if (ret == 0) {
 			router_types_detect_pre(our_mac);
-			node_list_maintain();
+			if (node_list_maintain()) {
+				ret = 1;
+				goto proto_free;
+			}
 		}
 
 		if (ret <= 0)
