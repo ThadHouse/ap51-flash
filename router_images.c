@@ -568,6 +568,12 @@ struct router_image img_ce = {
 	.image_verify = ce_verify,
 };
 
+struct router_image img_ce2 = {
+	.type = IMAGE_TYPE_CE,
+	.desc = "combined ext image 2",
+	.image_verify = ce_verify,
+};
+
 struct router_image img_zyxel = {
 	.type = IMAGE_TYPE_ZYXEL,
 	.desc = "Zyxel image",
@@ -579,6 +585,7 @@ static struct router_image *router_images[] = {
 	&img_ubnt,
 	&img_ci,
 	&img_ce,
+	&img_ce2,
 	&img_zyxel,
 	NULL,
 };
@@ -748,6 +755,8 @@ int router_images_verify_path(const char *image_path)
 		}
 
 		found_consumer = 1;
+
+		break;
 
 #if defined(DEBUG)
 		printf("verify image path: %s: %s (%i bytes)\n",
